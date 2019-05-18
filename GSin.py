@@ -318,7 +318,7 @@ def A_Apostrofo(cadena):
     estado_actual = 0
 
     for caracter in cadena:
-        estado_proximo = D_Apostrofo(estado_actual, caracter)
+        estado_proximo = d_Apostrofo(estado_actual, caracter)
         if estado_proximo == TRAMPA:
             return RESULTADO_TRAMPA
         estado_actual = estado_proximo
@@ -344,7 +344,7 @@ def A_Asterisco(cadena):
     estado_actual = 0
 
     for caracter in cadena:
-        estado_proximo = D_Asterisco(estado_actual, caracter)
+        estado_proximo = d_Asterisco(estado_actual, caracter)
         if estado_proximo == TRAMPA:
             return RESULTADO_TRAMPA
         estado_actual = estado_proximo
@@ -608,3 +608,350 @@ def A_True(cadena):
         return RESULTADO_NO_ACEPTADO
 
 #################################################################
+
+#delta eof
+def d_EOF(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "e":
+        return 1
+    if estado_anterior == 1 and caracter == "o":
+        return 2
+    if estado_anterior == 2 and caracter == "f":
+        return 3
+
+    
+    return TRAMPA
+
+#automata eof
+
+def A_EOF(cadena):
+    Finales = [3]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_EOF(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+
+#################################################################
+
+#delta fun
+def d_FUN(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "f":
+        return 1
+    if estado_anterior == 1 and caracter == "u":
+        return 2
+    if estado_anterior == 2 and caracter == "n":
+        return 3
+
+    
+    return TRAMPA
+
+#automata fun
+
+def A_FUN(cadena):
+    Finales = [3]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_FUN(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta (
+def d_ParenOpen(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "(":
+        return 1
+
+    return TRAMPA
+
+#automata (
+
+def A_ParenOpen(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_ParenOpen(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta )
+def d_ParenClose(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == ")":
+        return 1
+
+    return TRAMPA
+
+#automata )
+
+def A_ParenClose(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_ParenClose(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta ,
+def d_Coma(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == ",":
+        return 1
+
+    return TRAMPA
+
+#automata ,
+
+def A_Coma(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_Coma(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta ;
+def d_PuntoComa(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == ";":
+        return 1
+
+    return TRAMPA
+
+#automata ;
+
+def A_PuntoComa(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_PuntoComa(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta var
+def d_VAR(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "v":
+        return 1
+    if estado_anterior == 1 and caracter == "a":
+        return 2
+    if estado_anterior == 2 and caracter == "r":
+        return 3
+    
+    return TRAMPA
+
+#automata var
+
+def A_VAR(cadena):
+    Finales = [3]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_VAR(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta for
+def d_FOR(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "f":
+        return 1
+    if estado_anterior == 1 and caracter == "o":
+        return 2
+    if estado_anterior == 2 and caracter == "r":
+        return 3
+    
+    return TRAMPA
+
+#automata for
+
+def A_FOR(cadena):
+    Finales = [3]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_FOR(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta =
+def d_Igual(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "=":
+        return 1
+
+    return TRAMPA
+
+#automata =
+
+def A_Igual(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_Igual(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta else
+def d_Else(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "e":
+        return 1
+    if estado_anterior == 1 and caracter == "l":
+        return 2
+    if estado_anterior == 2 and caracter == "s":
+        return 3
+    if estado_anterior == 3 and caracter == "e":
+        return 4
+
+    return TRAMPA
+
+#automata else
+
+def A_Else(cadena):
+    Finales = [4]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_Else(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta if
+def d_If(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "i":
+        return 1
+    if estado_anterior == 1 and caracter == "f":
+        return 2
+
+    return TRAMPA
+
+#automata if
+
+def A_If(cadena):
+    Finales = [2]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_If(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
+#delta return
+def d_Return(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "r":
+        return 1
+    if estado_anterior == 1 and caracter == "e":
+        return 2
+    if estado_anterior == 2 and caracter == "t":
+        return 3
+    if estado_anterior == 3 and caracter == "u":
+        return 4
+    if estado_anterior == 4 and caracter == "r":
+        return 5
+    if estado_anterior == 5 and caracter == "n":
+        return 6
+
+    return TRAMPA
+
+#automata return
+
+def A_Return(cadena):
+    Finales = [5]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_Return(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
