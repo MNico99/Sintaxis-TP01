@@ -942,7 +942,7 @@ def d_Return(estado_anterior, caracter):
 #automata return
 
 def A_Return(cadena):
-    Finales = [5]
+    Finales = [6]
     estado_actual = 0
 
     for caracter in cadena:
