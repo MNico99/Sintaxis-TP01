@@ -27,8 +27,8 @@ tokens = ["eof", "fun", "(", ")", ",", "var", ";", "=", "if", "for", "else", "re
 #                lexeme = ''
 espacio = ' '
 lexeme = ''
-lexer = [('', '')]
-cadena = "and"
+lexer = []
+cadena = "else"
 
 for posicion,char in enumerate(cadena):
     if char != espacio:
