@@ -469,6 +469,32 @@ def A_Mas(cadena):
 
 #################################################################
 
+#delta <
+def d_Menor(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "<":
+        return 1
+
+    return TRAMPA
+
+#automata <
+
+def A_Menor(cadena):
+    Finales = [1]
+    estado_actual = 0
+
+    for caracter in cadena:
+        estado_proximo = d_Menor(estado_actual, caracter)
+        if estado_proximo == TRAMPA:
+            return RESULTADO_TRAMPA
+        estado_actual = estado_proximo
+
+    if estado_actual in Finales:
+        return RESULTADO_ACEPTADO
+    else:
+        return RESULTADO_NO_ACEPTADO
+
+#################################################################
+
 #delta >=
 def d_Mayorigual(estado_anterior, caracter):
     if estado_anterior == 0 and caracter == ">":
