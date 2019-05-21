@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 TRAMPA = -1
 RESULTADO_ACEPTADO = "ACEPTADO"
 RESULTADO_TRAMPA = "TRAMPA"
@@ -56,7 +57,7 @@ for cadena, resultado in casosNumeros:
 
 #delta String
 def d_String(estado_anterior, caracter):
-    if estado_anterior == 0 and caracter == "´":
+    if estado_anterior == 0 and caracter == "'":
         return 1
     if estado_anterior == 1 and caracter in letra:
         return 2
@@ -66,7 +67,7 @@ def d_String(estado_anterior, caracter):
         return 2
     if estado_anterior == 2 and caracter in digito:
         return 2 
-    if estado_anterior == 2 and caracter == "´":
+    if estado_anterior == 2 and caracter == "'":
         return 3
 
     
@@ -89,12 +90,12 @@ def A_String(cadena):
         return RESULTADO_NO_ACEPTADO
 
 casosString = [
-    ("´AAAdssGFKHFga111skgAHADSF´", RESULTADO_ACEPTADO),    
-    ("´aBcDe1F2g3´", RESULTADO_ACEPTADO),
-    ("´aaaaas******´", RESULTADO_TRAMPA),
-    ("´HolaMundo999´", RESULTADO_ACEPTADO),
+    ("'AAAdssGFKHFga111skgAHADSF'", RESULTADO_ACEPTADO),    
+    ("'aBcDe1F2g3'", RESULTADO_ACEPTADO),
+    ("'aaaaas******'", RESULTADO_TRAMPA),
+    ("'HolaMundo999'", RESULTADO_ACEPTADO),
     ("'-'", RESULTADO_TRAMPA),
-    ("´MeGustanLasMilanesasYElNumero73´", RESULTADO_ACEPTADO),
+    ("'MeGustanLasMilanesasYElNumero73'", RESULTADO_ACEPTADO),
     (":)", RESULTADO_TRAMPA),
 ]
 

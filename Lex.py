@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from GLex import *
 from GSin import *
 
@@ -27,80 +28,81 @@ tokens = ["eof", "fun", "(", ")", ",", "var", ";", "=", "if", "for", "else", "re
 #                lexeme = ''
 espacio = ' '
 lexeme = ''
-lexer = []
-cadena = "else"
+lexer = ('','')
+cadena = "if if var"
 
 for posicion,char in enumerate(cadena):
     if char != espacio:
-        lexeme += char # adding a char each time    
+        lexeme += char # adding a char each time 
+        #print(lexeme) 
         if A_AND(cadena) == RESULTADO_ACEPTADO:
-            lexer = ("AND", lexeme)   
-        if A_Apostrofo == RESULTADO_ACEPTADO:
+            lexer = ("AND", lexeme) 
+        if A_Apostrofo(cadena) == RESULTADO_ACEPTADO:
             lexer = ("'", lexeme)
-        if A_Asterisco == RESULTADO_ACEPTADO:
+        if A_Asterisco(cadena) == RESULTADO_ACEPTADO:
             lexer = ("*", lexeme)
-        if A_Coma == RESULTADO_ACEPTADO:
+        if A_Coma(cadena) == RESULTADO_ACEPTADO:
             lexer = (",", lexeme)      
-        if A_CorcheteAbierto == RESULTADO_ACEPTADO:
+        if A_CorcheteAbierto(cadena) == RESULTADO_ACEPTADO:
             lexer = ("[", lexeme)    
-        if A_CorcheteCerrado == RESULTADO_ACEPTADO:
+        if A_CorcheteCerrado(cadena) == RESULTADO_ACEPTADO:
             lexer = ("]", lexeme)
-        if A_DobleIgual == RESULTADO_ACEPTADO:
+        if A_DobleIgual(cadena) == RESULTADO_ACEPTADO:
             lexer = ("==", lexeme)
-        if A_Else == RESULTADO_ACEPTADO:
+        if A_Else(cadena) == RESULTADO_ACEPTADO:
             lexer = ("ELSE", lexeme)
-        if A_EOF == RESULTADO_ACEPTADO:
+        if A_EOF(cadena) == RESULTADO_ACEPTADO:
             lexer = ("EOF", lexeme)
-        if A_Exclamacion == RESULTADO_ACEPTADO:
+        if A_Exclamacion(cadena) == RESULTADO_ACEPTADO:
             lexer = ("!", lexeme)
-        if A_ExclamacionIgual == RESULTADO_ACEPTADO:
+        if A_ExclamacionIgual(cadena) == RESULTADO_ACEPTADO:
             lexer = ("!=", lexeme)
-        if A_False == RESULTADO_ACEPTADO:
+        if A_False(cadena) == RESULTADO_ACEPTADO:
             lexer = ("FALSE", lexeme)
-        if A_FOR == RESULTADO_ACEPTADO:
+        if A_FOR(cadena) == RESULTADO_ACEPTADO:
             lexer = ("FOR", lexeme)
-        if A_FUN == RESULTADO_ACEPTADO:
+        if A_FUN(cadena) == RESULTADO_ACEPTADO:
             lexer = ("FUN", lexeme)
-        if A_Guionmedio == RESULTADO_ACEPTADO:
+        if A_Guionmedio(cadena) == RESULTADO_ACEPTADO:
             lexer = ("-", lexeme)
-        if A_ID == RESULTADO_ACEPTADO:
+        if A_ID(cadena) == RESULTADO_ACEPTADO:
             lexer = ("ID", lexeme)
-        if A_If == RESULTADO_ACEPTADO:
+        if A_If(cadena) == RESULTADO_ACEPTADO:
             lexer = ("IF", lexeme)
-        if A_Igual == RESULTADO_ACEPTADO:
+        if A_Igual(cadena) == RESULTADO_ACEPTADO:
             lexer = ("=", lexeme)
-        if A_Mas == RESULTADO_ACEPTADO:
+        if A_Mas(cadena) == RESULTADO_ACEPTADO:
             lexer = ("+", lexeme)
-        if A_Mayor == RESULTADO_ACEPTADO:
+        if A_Mayor(cadena) == RESULTADO_ACEPTADO:
             lexer = (">", lexeme)
-        if A_Mayorigual == RESULTADO_ACEPTADO:
+        if A_Mayorigual(cadena) == RESULTADO_ACEPTADO:
             lexer = (">=", lexeme)
-        if A_Menorigual == RESULTADO_ACEPTADO:
+        if A_Menorigual(cadena) == RESULTADO_ACEPTADO:
             lexer = ("<=", lexeme)
-        if A_Menor == RESULTADO_ACEPTADO:
+        if A_Menor(cadena) == RESULTADO_ACEPTADO:
             lexer = ("<", lexeme)
-        if A_Numeros == RESULTADO_ACEPTADO:
+        if A_Numeros(cadena) == RESULTADO_ACEPTADO:
             lexer = ("NUMEROS", lexeme)
-        if A_OR == RESULTADO_ACEPTADO:
+        if A_OR(cadena) == RESULTADO_ACEPTADO:
             lexer = ("OR", lexeme)
-        if A_ParenClose == RESULTADO_ACEPTADO:
+        if A_ParenClose(cadena) == RESULTADO_ACEPTADO:
             lexer = (")", lexeme)
-        if A_ParenOpen == RESULTADO_ACEPTADO:
+        if A_ParenOpen(cadena) == RESULTADO_ACEPTADO:
             lexer = ("(", lexeme)
-        if A_Punto == RESULTADO_ACEPTADO:
+        if A_Punto(cadena) == RESULTADO_ACEPTADO:
             lexer = (".", lexeme)
-        if A_PuntoComa == RESULTADO_ACEPTADO:
+        if A_PuntoComa(cadena) == RESULTADO_ACEPTADO:
             lexer = (";", lexeme)
-        if A_Return == RESULTADO_ACEPTADO:
+        if A_Return(cadena) == RESULTADO_ACEPTADO:
             lexer = ("RETURN", lexeme)
-        if A_Slash == RESULTADO_ACEPTADO:
+        if A_Slash(cadena) == RESULTADO_ACEPTADO:
             lexer = ("/", lexeme)
-        if A_String == RESULTADO_ACEPTADO:
+        if A_String(cadena) == RESULTADO_ACEPTADO:
             lexer = ("STRING", lexeme)
-        if A_True == RESULTADO_ACEPTADO:
+        if A_True(cadena) == RESULTADO_ACEPTADO:
             lexer = ("TRUE", lexeme)
-        if A_VAR == RESULTADO_ACEPTADO:
-            lexer = ("VAR", lexeme)
-        if A_While == RESULTADO_ACEPTADO:
+        if A_VAR(cadena) == RESULTADO_ACEPTADO:
+            lexer = lexer + ("VAR", lexeme)
+        if A_While(cadena) == RESULTADO_ACEPTADO:
             lexer = ("WHILE", lexeme)
 print(lexer)
