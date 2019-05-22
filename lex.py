@@ -37,7 +37,7 @@ TokenConfig = [
     ("NUM", A_Num),
     ("ID", A_ID),
 ]
-'''
+
 def lex(cadena):
     tokens = []
     start = 0
@@ -46,5 +46,5 @@ def lex(cadena):
     for index in range(0, len(aux)):
         if automata(aux[index]) == RESULTADO_ACEPTADO:
             lexer.append("IF", aux[index])
-'''
+
 cadena = "999"
