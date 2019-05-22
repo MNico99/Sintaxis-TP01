@@ -1,51 +1,6 @@
 # -*- coding: utf-8 -*-
 from automatas import *
 
-#DEVUELVE QUE AUTOMATA ACEPTA LA CADENA INGRESADA
-tokens = []
-def automata(src: str) -> tokens:
-    
-    if cadena[0] in digito:
-        A_Num(cadena)
-    if cadena[0].isalpha():
-        A_AND(cadena)
-        A_Else(cadena)
-        A_EOF(cadena)
-        A_False(cadena)
-        A_FOR(cadena)
-        A_FUN(cadena)
-        A_If(cadena)
-        A_OR(cadena)
-        A_Return(cadena)
-        A_True(cadena)
-        A_VAR(cadena)
-        A_While(cadena)
-        A_ID(cadena)
-    if cadena[0] in simbolos:
-        A_Asterisco(cadena)
-        A_Coma(cadena)
-        A_CorcheteAbierto(cadena)
-        A_CorcheteCerrado(cadena)
-        A_DobleIgual(cadena)
-        A_Exclamacion(cadena)
-        A_ExclamacionIgual(cadena)
-        A_Guionmedio(cadena)
-        A_Igual(cadena)
-        A_Mas(cadena)
-        A_Mayor(cadena)
-        A_Mayorigual(cadena)
-        A_Menor(cadena)
-        A_Menorigual(cadena)
-        A_ParenClose(cadena)
-        A_ParenOpen(cadena)
-        A_PuntoComa(cadena)
-        A_Slash(cadena)
-    if cadena[0] == "'":
-        A_Apostrofo(cadena)
-        A_String(cadena)
-
-lexeme = ''
-cadena = "9999"
 
 TokenConfig = [
     ('PALABRAS RESERVADAS', A_If),
@@ -82,30 +37,14 @@ TokenConfig = [
     ("NUM", A_Num),
     ("ID", A_ID),
 ]
-
+'''
 def lex(cadena):
-  tokens = []
-  start = 0
-  index = 0
-  while index <= len(cadena):
-    # tomo un prefijo
-    cadenaPrefijo = cadena[start: index + 1]
-    todosTrampa = True
-    # evaluo la cadena prefijo con cada automata (tiene que definir TokenConfig)
-    for automata, tipoDeToken in TokenConfig: 
-      resultado = automata(cadenaPrefijo)
-      # si resultado NO es resultado trampa
-      # entonces  todosTrampa va a ser False,
-      # por ende podemos consumir mas caracteres, es decir
-      # la cadena prefijo es mas larga
-
-    # fuera del ciclo
-    # si son todosTrampa entonces llegue a  la maxima cadena prefijo
-    # vuelvo index para atras (index -= 1)
-    # y hago tokens.append(nuevoToken)
-    # donde nuevo token va a tener el tipo del primer candidato y el lexeme
-    # es efectivamente cadenaPrefijo
- 
-    # SINO son todso tramapa simplemente avanzo el puntero
-    #index += 1
-      
+    tokens = []
+    start = 0
+    index = 0
+    aux = cadena.split()
+    for index in range(0, len(aux)):
+        if automata(aux[index]) == RESULTADO_ACEPTADO:
+            lexer.append("IF", aux[index])
+'''
+cadena = "999"
