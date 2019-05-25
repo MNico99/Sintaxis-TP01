@@ -2,7 +2,6 @@
 from automatas import *
 
 
-
 TokenConfig = [
     ('IF', A_If),
     ('EOF', A_EOF),
@@ -40,15 +39,16 @@ TokenConfig = [
     ("ID", A_ID),
 ]
 
-cadena = "if"
+
 
 def lex(cadena):
+
     tokens = []
     index = 0
     start = 0
     
       
-    while index < len(cadena):
+    while index <= len(cadena):
         posible_candidato = []
         candidatos = []
         lexeme = ""
@@ -59,10 +59,10 @@ def lex(cadena):
             todosTrampa = True
             lexeme  = cadenaPrefijo
             cadenaPrefijo = cadena[start: index + 1]
-            posible_candidato = candidatos 
-            candidatos = []
+            candidatos = posible_candidato 
+            posible_candidato = []
 
-            for automata, tipoDeToken  in TokenConfig:
+            for  tipoDeToken, automata in TokenConfig:
                 resultado = automata(cadenaPrefijo)
                 if resultado == RESULTADO_ACEPTADO:
                     posible_candidato.append(tipoDeToken)
@@ -71,16 +71,14 @@ def lex(cadena):
                     todosTrampa = False
         
             index += 1
-
+            
         index -= 1
 
         tipoDeToken = candidatos[0]
-        tokens.append([lexeme, tipoDeToken])
+        tokens.append((tipoDeToken, lexeme))
 
     return tokens
 
 
-
-        
-                    
+print(lex('if '))                         
         
