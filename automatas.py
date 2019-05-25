@@ -9,45 +9,48 @@ simbolos = ["(", ")", ",", ";", "=", "{", "}", "=", "!", ">", "<", "-", "+", "/"
 
 #DEVUELVE QUE AUTOMATA ACEPTA LA CADENA INGRESADA
 
-def automata(estado_inicial, cadena):
+#def automata(cadena):
 
-    if cadena[0] in digito:
-        return A_Num(cadena)
-    if cadena[0].isalpha():
-        return A_AND(cadena)
-        return A_Else(cadena)
-        return A_EOF(cadena)
-        return A_False(cadena)
-        return A_FOR(cadena)
-        return A_FUN(cadena)
-        return A_If(cadena)
-        return A_OR(cadena)
-        return A_Return(cadena)
-        return A_True(cadena)
-        return A_VAR(cadena)
-        return A_While(cadena)
-        return A_ID(cadena)
-    if cadena[0] in simbolos:
-        return A_Asterisco(cadena)
-        return A_Coma(cadena)
-        return A_CorcheteAbierto(cadena)
-        return A_CorcheteCerrado(cadena)
-        return A_DobleIgual(cadena)
-        return A_Exclamacion(cadena)
-        return A_ExclamacionIgual(cadena)
-        return A_Guionmedio(cadena)
-        return A_Igual(cadena)
-        return A_Mas(cadena)
-        return A_Mayor(cadena)
-        return A_Mayorigual(cadena)
-        return A_Menor(cadena)
-        return A_Menorigual(cadena)
-        return A_ParenClose(cadena)
-        return A_ParenOpen(cadena)
-        return A_PuntoComa(cadena)
-        return A_Slash(cadena)
-        return A_Apostrofo(cadena)
-        return A_String(cadena)
+ #   if cadena in Keywords:
+#     return RESULTADO_ACEPTADO
+
+    #if cadena[0] in digito:
+     #   return A_Num(cadena)
+    #if cadena[0].isalpha():
+     #   return A_AND(cadena)
+        #return A_Else(cadena)
+        #return A_EOF(cadena)
+        #return A_False(cadena)
+        #return A_FOR(cadena)
+        #return A_FUN(cadena)
+        #return A_If(cadena)
+        #return A_OR(cadena)
+        #return A_Return(cadena)
+        #return A_True(cadena)
+        #return A_VAR(cadena)
+        #return A_While(cadena)
+        #return A_Id(cadena)
+    #if cadena[0] in simbolos:
+     #   return A_Asterisco(cadena)
+        #return A_Coma(cadena)
+        #return A_CorcheteAbierto(cadena)
+        #return A_CorcheteCerrado(cadena)
+        #return A_DobleIgual(cadena)
+        #return A_Exclamacion(cadena)
+        #return A_ExclamacionIgual(cadena)
+        #return A_Guionmedio(cadena)
+        #return A_Igual(cadena)
+        #return A_Mas(cadena)
+        #return A_Mayor(cadena)
+        #return A_Mayorigual(cadena)
+        #return A_Menor(cadena)
+        #return A_Menorigual(cadena)
+        #return A_ParenClose(cadena)
+        #return A_ParenOpen(cadena)
+        #return A_PuntoComa(cadena)
+        #return A_Slash(cadena)
+        #return A_Apostrofo(cadena)
+        #return A_String(cadena)
 
 
 ####################GRAMATICA LEXICA#####################
@@ -1172,4 +1175,3 @@ def A_Return(cadena):
         return RESULTADO_NO_ACEPTADO
 
 cadena = "999"
-print(automata(0, cadena))
