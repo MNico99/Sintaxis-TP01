@@ -48,7 +48,15 @@ def lex(cadena):
     start = 0
     
       
-    while index <= len(cadena):
+    while index < len(cadena):
+        #Solución al problema del espacio
+
+        c = cadena[index]
+        if c.isspace():
+            index+=1
+            continue
+        
+        start = index
         posible_candidato = []
         candidatos = []
         lexeme = ""
@@ -70,15 +78,18 @@ def lex(cadena):
                 elif resultado == RESULTADO_NO_ACEPTADO:
                     todosTrampa = False
         
-            index += 1
-            
+            index += 1    
+        
+        
         index -= 1
-
-        tipoDeToken = candidatos[0]
-        tokens.append((tipoDeToken, lexeme))
+        if len(candidatos) == 0:
+            raise Exception("UNKNOWN TOKEN " + lexeme)
+        else:
+            tipoDeToken = candidatos[0]
+            tokens.append((tipoDeToken, lexeme))
 
     return tokens
 
 
-print(lex('if '))                         
+print(lex('if else '))                         
         
