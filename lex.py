@@ -26,6 +26,7 @@ TokenConfig = [
     ('PUNTO', A_Punto),
     ('COMA', A_PuntoComa),
     ('SLASH', A_Slash),
+    ('IGUAL', A_Igual),
     ('DOBLE_IGUAL', A_DobleIgual),
     ('EXCLAMACION_IGUAL', A_ExclamacionIgual),
     ('MENOR', A_Menor),
@@ -92,5 +93,5 @@ def lex(cadena):
     return tokens
 
 
-print(lex('if else '))                         
+print(lex('if else Holaaa 2332 ( ) + - = == '))
         
