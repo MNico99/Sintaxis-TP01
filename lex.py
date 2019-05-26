@@ -49,8 +49,9 @@ def lex(cadena):
     
       
     while index < len(cadena):
-        #Solución al problema del espacio
 
+
+        #Solución al problema del espacio
         c = cadena[index]
         if c.isspace():
             index+=1
@@ -83,7 +84,7 @@ def lex(cadena):
         
         index -= 1
         if len(candidatos) == 0:
-            raise Exception("UNKNOWN TOKEN " + lexeme)
+            raise Exception("TOKEN NO ACEPTADO " + lexeme)
         else:
             tipoDeToken = candidatos[0]
             tokens.append((tipoDeToken, lexeme))
