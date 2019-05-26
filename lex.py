@@ -93,5 +93,5 @@ def lex(cadena):
     return tokens
 
 
-print(lex('if else Holaaa 2332 ( ) + - = == '))
+print(lex("if else 'Holaaa' 2332 ( ) + - ' = == "))
         
