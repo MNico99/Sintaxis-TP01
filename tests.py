@@ -15,7 +15,7 @@ casosLexer = [
     ("skere = 'sk' + 'ere'", [('ID', 'skere'), ('IGUAL', '='), ('STRING', "'sk'"), ('MAS', '+'), ('STRING', "'ere'")]),
     ("while ( b = c ) or ( a = c )", [('WHILE', 'while'), ('PAREN_OPEN', '('), ('ID', 'b'), ('IGUAL', '='), ('ID', 'c'), ('PAREN_CLOSE', ')'), ('OR', 'or'), ('PAREN_OPEN', '('), ('ID', 'a'), ('IGUAL', '='), ('ID', 'c'), ('PAREN_CLOSE', ')')]),
     ("1 + 2 + 3 + 4 = 11", [('NUM', '1'), ('MAS', '+'), ('NUM', '2'), ('MAS', '+'), ('NUM', '3'), ('MAS', '+'), ('NUM', '4'), ('IGUAL', '='), ('NUM', '11')]),
-    ("'casa' + 'aldo' = 'casaDeAldo'", [('STRING', "'casa'"), ('MAS', '+'), ('STRING', "'aldo'"), ('IGUAL', '='), ('STRING', "'casaDeAldo'")])
+    ("'casa' + 'aldo' = 'casaDeAldo'", [('STRING', "'casa'"), ('MAS', '+'), ('STRING', "'aldo'"), ('IGUAL', '='), ('STRING', "'casaDeAldo'")]) 
 ]
 
 for cadena, resultado in casosLexer:
