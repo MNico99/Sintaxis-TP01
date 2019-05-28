@@ -192,7 +192,7 @@ for cadena, resultado in casosWhile:
 
 #delta {
 def d_CorcheteAbierto(estado_anterior, caracter):
-    if estado_anterior == 0 and caracter == "[":
+    if estado_anterior == 0 and caracter == "{":
         return 1
 
     return TRAMPA
@@ -214,8 +214,8 @@ def A_CorcheteAbierto(cadena):
         return RESULTADO_NO_ACEPTADO
 
 casosCorcheteAbierto = [
-    ("[", RESULTADO_ACEPTADO),
-    ("]", RESULTADO_TRAMPA),
+    ("{", RESULTADO_ACEPTADO),
+    ("}", RESULTADO_TRAMPA),
 ]
 
 for cadena, resultado in casosCorcheteAbierto:
@@ -225,7 +225,7 @@ for cadena, resultado in casosCorcheteAbierto:
 
 #delta }
 def d_CorcheteCerrado(estado_anterior, caracter):
-    if estado_anterior == 0 and caracter == "]":
+    if estado_anterior == 0 and caracter == "}":
         return 1
 
     
@@ -248,8 +248,8 @@ def A_CorcheteCerrado(cadena):
         return RESULTADO_NO_ACEPTADO
 
 casosCorcheteCerrado = [
-    ("]", RESULTADO_ACEPTADO),
-    ("[", RESULTADO_TRAMPA),
+    ("}", RESULTADO_ACEPTADO),
+    ("{", RESULTADO_TRAMPA),
 ]
 
 for cadena, resultado in casosCorcheteCerrado:
