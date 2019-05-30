@@ -79,8 +79,8 @@ def lex(cadena):
                     posible_candidato.append(tipoDeToken)
                     todosTrampa = False
                 elif resultado == RESULTADO_NO_ACEPTADO:
-                    todosTrampa = False
-                elif index > len(cadena):
+                    todosTrampa = False 
+                elif index > len(cadena): #Solución al bucle del ultimo caracter
                     break
                     
             index += 1    
