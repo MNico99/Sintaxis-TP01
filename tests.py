@@ -37,13 +37,13 @@ casosLexer = [
     ),
 
     (
-        "var casa = 'casaDeAldo'", [('VAR', 'var'), 
-        ('ID', 'casa'), ('IGUAL', '='), ('STRING', "'casaDeAldo'")]
+        "var casa = 'casaDeAldo'", 
+        [('VAR', 'var'), ('ID', 'casa'), ('IGUAL', '='), ('STRING', "'casaDeAldo'")]
     ),
 
     (
-        "vector [ 2 ] = 32",
-        [('ID', 'vector'), ('CORCHETE_ABIERTO', '['), ('NUM', '2'), ('CORCHETE_CERRADO', ']'), ('IGUAL', '='), ('NUM', '32')]
+        "vector { 2 } = 32",
+        [('ID', 'vector'), ('LLAVE_ABIERTA', '{'), ('NUM', '2'), ('LLAVE_CERRADA', '}'), ('IGUAL', '='), ('NUM', '32')]
     ),
 
     (
@@ -67,8 +67,8 @@ casosLexer = [
     ),
 
     (
-        "1 + 2 + 3 + 4 = 11", [('NUM', '1'), 
-        ('MAS', '+'), ('NUM', '2'), ('MAS', '+'), ('NUM', '3'), ('MAS', '+'), ('NUM', '4'), ('IGUAL', '='), ('NUM', '11')]
+        "1 + 2 + 3 + 4 = 11", 
+        [('NUM', '1'), ('MAS', '+'), ('NUM', '2'), ('MAS', '+'), ('NUM', '3'), ('MAS', '+'), ('NUM', '4'), ('IGUAL', '='), ('NUM', '11')]
     ),
 
     (
