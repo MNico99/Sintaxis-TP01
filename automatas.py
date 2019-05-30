@@ -191,19 +191,19 @@ for cadena, resultado in casosWhile:
 #################################################################
 
 #delta {
-def d_CorcheteAbierto(estado_anterior, caracter):
-    if estado_anterior == 0 and caracter == "[":
+def d_LlaveAbierta(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "{":
         return 1
 
     return TRAMPA
 
 #automata {
-def A_CorcheteAbierto(cadena):
+def A_LlaveAbierta(cadena):
     Finales = [1]
     estado_actual = 0
 
     for caracter in cadena:
-        estado_proximo = d_CorcheteAbierto(estado_actual, caracter)
+        estado_proximo = d_LlaveAbierta(estado_actual, caracter)
         if estado_proximo == TRAMPA:
             return RESULTADO_TRAMPA
         estado_actual = estado_proximo
@@ -213,9 +213,9 @@ def A_CorcheteAbierto(cadena):
     else:
         return RESULTADO_NO_ACEPTADO
 
-casosCorcheteAbierto = [
-    ("[", RESULTADO_ACEPTADO),
-    ("]", RESULTADO_TRAMPA),
+casosLlaveAbierta = [
+    ("{", RESULTADO_ACEPTADO),
+    ("}", RESULTADO_TRAMPA),
 ]
 
 for cadena, resultado in casosCorcheteAbierto:
@@ -224,20 +224,20 @@ for cadena, resultado in casosCorcheteAbierto:
 #################################################################
 
 #delta }
-def d_CorcheteCerrado(estado_anterior, caracter):
-    if estado_anterior == 0 and caracter == "]":
+def d_LlaveCerrada(estado_anterior, caracter):
+    if estado_anterior == 0 and caracter == "}":
         return 1
 
     
     return TRAMPA
 
 #automata }
-def A_CorcheteCerrado(cadena):
+def A_LlaveCerrada(cadena):
     Finales = [1]
     estado_actual = 0
 
     for caracter in cadena:
-        estado_proximo = d_CorcheteCerrado(estado_actual, caracter)
+        estado_proximo = d_LlaveCerrada(estado_actual, caracter)
         if estado_proximo == TRAMPA:
             return RESULTADO_TRAMPA
         estado_actual = estado_proximo
@@ -247,9 +247,9 @@ def A_CorcheteCerrado(cadena):
     else:
         return RESULTADO_NO_ACEPTADO
 
-casosCorcheteCerrado = [
-    ("]", RESULTADO_ACEPTADO),
-    ("[", RESULTADO_TRAMPA),
+casosLlaveCerrada = [
+    ("}", RESULTADO_ACEPTADO),
+    ("{", RESULTADO_TRAMPA),
 ]
 
 for cadena, resultado in casosCorcheteCerrado:
