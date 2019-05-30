@@ -58,10 +58,6 @@ def lex(cadena):
             index+=1
             continue
         
-<<<<<<< HEAD
-
-=======
->>>>>>> 6effe7011cec28c9acbb998b05834952a1eeec38
         start = index
         posible_candidato = []
         candidatos = []
@@ -69,20 +65,13 @@ def lex(cadena):
         cadenaPrefijo = ""
         todosTrampa = False
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6effe7011cec28c9acbb998b05834952a1eeec38
         while not todosTrampa:
             todosTrampa = True
             lexeme  = cadenaPrefijo
             cadenaPrefijo = cadena[start: index + 1]
             candidatos = posible_candidato 
             posible_candidato = []
-<<<<<<< HEAD
     
-=======
->>>>>>> 6effe7011cec28c9acbb998b05834952a1eeec38
 
             for  tipoDeToken, automata in TokenConfig:
                 resultado = automata(cadenaPrefijo)
@@ -91,13 +80,9 @@ def lex(cadena):
                     todosTrampa = False
                 elif resultado == RESULTADO_NO_ACEPTADO:
                     todosTrampa = False
-<<<<<<< HEAD
                 elif index > len(cadena):
                     break
                     
-=======
-        
->>>>>>> 6effe7011cec28c9acbb998b05834952a1eeec38
             index += 1    
         
         
@@ -109,10 +94,3 @@ def lex(cadena):
             tokens.append((tipoDeToken, lexeme))
 
     return tokens
-<<<<<<< HEAD
-=======
-
-
-print(lex("if else 'Holaaa' 2332 ( ) + - ' = == "))
-        
->>>>>>> 6effe7011cec28c9acbb998b05834952a1eeec38
