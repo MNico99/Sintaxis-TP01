@@ -75,4 +75,3 @@ def lex(cadena):
             index +=1
 
     return tokens
-
