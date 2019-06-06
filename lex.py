@@ -2,95 +2,77 @@
 from automatas import *
 
 
-TokenConfig = [
-    ('IF', A_If),
-    ('EOF', A_EOF),
-    ('ELSE', A_Else),
-    ('FALSE', A_False),
-    ('FOR', A_FOR),
-    ('FUN', A_FUN),
-    ('RETURN', A_Return),
-    ('TRUE', A_True),
-    ('VAR', A_VAR),
-    ('WHILE', A_While),
-    ('PAREN_OPEN', A_ParenOpen),
-    ('PAREN_CLOSE', A_ParenClose),
-    ('APOSTROFO', A_Apostrofo),
-    ('ASTERISCO', A_Asterisco),
-    ('COMA', A_Coma),
-    ('LLAVE_ABIERTA', A_LlaveAbierta),
-    ('LLAVE_CERRADA', A_LlaveCerrada),
-    ('EXCLAMACION', A_Exclamacion),
-    ('GUION_MEDIO', A_Guionmedio),
-    ('MAS', A_Mas),
-    ('PUNTO', A_Punto),
-    ('COMA', A_PuntoComa),
-    ('SLASH', A_Slash),
-    ('IGUAL', A_Igual),
-    ('DOBLE_IGUAL', A_DobleIgual),
-    ('EXCLAMACION_IGUAL', A_ExclamacionIgual),
-    ('MENOR', A_Menor),
-    ('MAYOR', A_Mayor),
-    ('MAYOR_IGUAL', A_Mayorigual),
-    ('MENOR_IGUAL', A_Menorigual),
-    ('AND', A_AND),
-    ('OR', A_OR),
+tokenList = [
+    ('IF', "if"),
+    ('EOF', "eof"),
+    ('ELSE', "else"),
+    ('FALSE', "false"),
+    ('FOR', "for"),
+    ('FUN', "fun"),
+    ('RETURN', "return"),
+    ('TRUE', "true"),
+    ('VAR', "var"),
+    ('WHILE', "while"),
+    ('PAREN_OPEN', "("),
+    ('PAREN_CLOSE', ")"),
+    ('APOSTROFO', "'"),
+    ('ASTERISCO', "*"),
+    ('COMA', ","),
+    ('LLAVE_ABIERTA', "{"),
+    ('LLAVE_CERRADA', "}"),
+    ('EXCLAMACION', "!"),
+    ('GUION_MEDIO', "-"),
+    ('MAS', "+"),
+    ('PUNTO', "."),
+    ('COMA', ","),
+    ('SLASH', "/"),
+    ('IGUAL', "="),
+    ('DOBLE_IGUAL', "=="),
+    ('EXCLAMACION_IGUAL', "!="),
+    ('MENOR', "<"),
+    ('MAYOR', ">"),
+    ('MAYOR_IGUAL', ">="),
+    ('MENOR_IGUAL', "<="),
+    ('AND', "and"),
+    ('OR', "or")
+    ]
+
+tokenA = [
     ("NUM", A_Num),
     ("STRING", A_String),
-    ("ID", A_ID),
+    ("ID", A_ID)
 ]
 
-
-
 def lex(cadena):
-
     tokens = []
+    cadenaPrefijo = cadena.split()
     index = 0
-    start = 0
     
       
-    while index < len(cadena):
-
-
-        #Solución al problema del espacio
-        c = cadena[index]
-        if c.isspace():
-            index+=1
-            continue
-        
-        start = index
-        posible_candidato = []
-        candidatos = []
+    while index < len(cadena.split()):
+      
         lexeme = ""
-        cadenaPrefijo = ""
-        todosTrampa = False
+        lexeme  = cadenaPrefijo[index]
+        candidatos = []
 
-        while not todosTrampa:
-            todosTrampa = True
-            lexeme  = cadenaPrefijo
-            cadenaPrefijo = cadena[start: index + 1]
-            candidatos = posible_candidato 
-            posible_candidato = []
-    
+        for  tipoDeToken, word in tokenList:
+            if word == lexeme:
+                candidatos.append(tipoDeToken)
+                break
 
-            for  tipoDeToken, automata in TokenConfig:
-                resultado = automata(cadenaPrefijo)
-                if resultado == RESULTADO_ACEPTADO:
-                    posible_candidato.append(tipoDeToken)
-                    todosTrampa = False
-                elif resultado == RESULTADO_NO_ACEPTADO:
-                    todosTrampa = False 
-                elif index > len(cadena): #Solución al bucle del ultimo caracter
-                    break
-                    
-            index += 1    
-        
-        
-        index -= 1
         if len(candidatos) == 0:
-            raise Exception("TOKEN NO ACEPTADO " + lexeme)
+            for tipoDeToken, automata in tokenA:
+                resultado = automata(lexeme)
+                if resultado == RESULTADO_ACEPTADO:
+                    candidatos.append(tipoDeToken)
+                    tokens.append((tipoDeToken, lexeme))
+                    index +=1
+            if len(candidatos) == 0: 
+                raise Exception("TOKEN NO ACEPTADO " + lexeme)
         else:
             tipoDeToken = candidatos[0]
             tokens.append((tipoDeToken, lexeme))
+            index +=1
 
     return tokens
+
