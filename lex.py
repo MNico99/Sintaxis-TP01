@@ -46,50 +46,26 @@ def lex(cadena):
 
     tokens = []
     index = 0
-    start = 0
+    cadenaPrefijo = cadena.split()
     
       
-    while index < len(cadena):
-
-
-        #Solución al problema del espacio
-        c = cadena[index]
-        if c.isspace():
-            index+=1
-            continue
+    while index < len(cadenaPrefijo):
         
-        start = index
-        posible_candidato = []
-        candidatos = []
         lexeme = ""
-        cadenaPrefijo = ""
-        todosTrampa = False
+        lexeme = cadenaPrefijo[index]
+        candidatos = []
 
-        while not todosTrampa:
-            todosTrampa = True
-            lexeme  = cadenaPrefijo
-            cadenaPrefijo = cadena[start: index + 1]
-            candidatos = posible_candidato 
-            posible_candidato = []
-    
-
-            for  tipoDeToken, automata in TokenConfig:
-                resultado = automata(cadenaPrefijo)
-                if resultado == RESULTADO_ACEPTADO:
-                    posible_candidato.append(tipoDeToken)
-                    todosTrampa = False
-                elif resultado == RESULTADO_NO_ACEPTADO:
-                    todosTrampa = False 
-                elif index > len(cadena): #Solución al bucle del ultimo caracter
-                    break
-                    
-            index += 1    
+        for  tipoDeToken, automata in TokenConfig:
+            resultado = automata(lexeme)
+            if resultado == RESULTADO_ACEPTADO:
+                candidatos.append(tipoDeToken)
+                break
         
         
-        index -= 1
         if len(candidatos) == 0:
             raise Exception("TOKEN NO ACEPTADO " + lexeme)
         else:
+            index += 1
             tipoDeToken = candidatos[0]
             tokens.append((tipoDeToken, lexeme))
 

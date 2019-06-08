@@ -218,8 +218,8 @@ casosLlaveAbierta = [
     ("}", RESULTADO_TRAMPA),
 ]
 
-for cadena, resultado in casosCorcheteAbierto:
-    assert A_CorcheteAbierto(cadena) == resultado
+#for cadena, resultado in casosCorcheteAbierto:
+#    assert A_CorcheteAbierto(cadena) == resultado
 
 #################################################################
 
@@ -252,8 +252,8 @@ casosLlaveCerrada = [
     ("{", RESULTADO_TRAMPA),
 ]
 
-for cadena, resultado in casosCorcheteCerrado:
-    assert A_CorcheteCerrado(cadena) == resultado
+#for cadena, resultado in casosCorcheteCerrado:
+#    assert A_CorcheteCerrado(cadena) == resultado
 
 #################################################################
 
