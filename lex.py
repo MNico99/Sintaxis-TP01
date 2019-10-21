@@ -24,7 +24,7 @@ TokenConfig = [
     ('GUION_MEDIO', A_Guionmedio),
     ('MAS', A_Mas),
     ('PUNTO', A_Punto),
-    ('COMA', A_PuntoComa),
+    ('PUNTOCOMA', A_PuntoComa),
     ('SLASH', A_Slash),
     ('IGUAL', A_Igual),
     ('DOBLE_IGUAL', A_DobleIgual),
@@ -90,3 +90,5 @@ def lex(cadena):
             tokens.append((tipoDeToken, lexeme))
 
     return tokens
+
+

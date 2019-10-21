@@ -3,12 +3,12 @@ from lex import *
 
 prods = {
     'Programa':[
-        ['ListaDecl', '"eof"']
+        ['ListaDecl', '"EOF"']
     ],
 
     'ListaDecl':[
         ['ListaDecl', 'Declaracion'],
-        ['λ']
+        []
     ],
 
     'Declaracion':[
@@ -18,26 +18,26 @@ prods = {
     ],
 
     'FunDecl':[
-        ['"fun"', 'Funcion']
+        ['FUN', 'Funcion']
     ],
 
     'Funcion':[
-        ['Identificador', '"("', 'ListaParametros', '")"', 'Bloque']
+        ['ID', 'PAREN_OPEN', 'ListaParametros', 'PAREN_CLOSE', 'Bloque']
     ],
 
     'ListaParametros':[
-        ['λ'],
+        [],
         ['Parametros']
     ],
 
     'Parametros':[
-        ['Identificador'],
-        ['Parametros', '","', 'Identificador']
+        ['ID'],
+        ['Parametros', 'COMA', 'ID']
     ],
 
     'VarDecl':[
-        ['"var"', 'Identificador', '";"'],
-        ['"var"', 'Identificador', '"="', 'Expresion', '";"']
+        ['VAR', 'ID', 'PUNTOCOMA'],
+        ['VAR', 'ID', 'IGUAL', 'Expresion', 'PUNTOCOMA']
     ],
 
     'Sentencia':[
@@ -50,7 +50,7 @@ prods = {
     ],
 
     'ExprSent':[
-        ['Expresion', '";"']
+        ['Expresion', 'PUNTOCOMA']
     ],
 
     'Expresion':[
@@ -58,97 +58,97 @@ prods = {
     ],
 
     'Asignacion':[
-        ['Identificador', '"="', 'Primitivo'],
-        ['OLogico', '";"'],
+        ['ID', 'IGUAL', 'Primitivo'],
+        ['OLogico', 'PUNTOCOMA'],
     ],
 
     'ForSent':[
-        ['"for"', '"("', 'PriArg', 'AdicArg', '";"', 'AdicArg', '")"', 'Sentencia']
+        ['FOR', 'PAREN_OPEN', 'PriArg', 'AdicArg', 'PUNTOCOMA', 'AdicArg', 'PAREN_CLOSE', 'Sentencia']
     ],
 
     'PriArg':[
         ['VarDecl'],
         ['ExprSent'],
-        ['";"']
+        ['PUNTOCOMA']
     ],
 
     'AdicArg':[
-        ['λ'],
+        [],
         ['Expresion']
     ],
 
     'IfSent':[
-        ['"if"', '"("', 'Expresion', '")"', 'Sentencia', '"else"', 'Sentencia'],
-        ['"if"', '"("', 'Expresion', '")"', 'Sentencia']
+        ['IF', 'PAREN_OPEN', 'Expresion', 'PAREN_CLOSE', 'Sentencia', 'ELSE', 'Sentencia'],
+        ['IF', 'PAREN_OPEN', 'Expresion', 'PAREN_CLOSE', 'Sentencia']
     ],
 
     'ReturnSent':[
-        ['"return"', 'Expresion', '";"'],
-        ['"return"', '";"']
+        ['RETURN', 'Expresion', 'PUNTOCOMA'],
+        ['RETURN', 'PUNTOCOMA']
     ],
 
     'WhileSent':[
-        ['"while"', '"("', 'Expresion', '")"', 'Sentencia']
+        ['"while"', 'PAREN_OPEN', 'Expresion', 'PAREN_CLOSE', 'Sentencia']
     ],
 
     'Bloque':[
-        ['"{"', 'ListaSent', '"}"']
+        ['LLAVE_ABIERTA', 'ListaSent', 'LLAVE_CERRADA']
     ],
 
     'ListaSent':[
         ['Sentencia', 'ListaSent'],
-        ['λ'],
+        [],
     ],
 
     'OLogico':[
         ['YLogico'],
-        ['YLogico', '"or"', 'OLogico']
+        ['YLogico', 'OR', 'OLogico']
     ],
 
     'YLogico':[
         ['Igua'],
-        ['Igua', '"and"', 'YLogico']
+        ['Igua', 'AND', 'YLogico']
     ],
 
     'Igua':[
         ['Comparacion'],
-        ['Comparacion', '"=="', 'Igua'],
-        ['Comparacion', '"!="', 'Igua']
+        ['Comparacion', 'DOBLE_IGUAL', 'Igua'],
+        ['Comparacion', 'A_ExclamacionIgual', 'Igua']
     ],
 
     'Comparacion':[
         ['Suma'],
-        ['Suma', '">"', 'Comparacion'],
-        ['Suma', '">="', 'Comparacion'],
-        ['Suma', '"<"', 'Comparacion'],
-        ['Suma', '"<="', 'Comparacion']
+        ['Suma', 'MAYOR', 'Comparacion'],
+        ['Suma', 'MAYOR_IGUAL', 'Comparacion'],
+        ['Suma', 'MENOR', 'Comparacion'],
+        ['Suma', 'MENOR_IGUAL', 'Comparacion']
     ],
 
     'Suma':[
         ['Mult'],
-        ['"-"', 'Suma'],
-        ['"+"', 'Suma']
+        ['GUION_MEDIO', 'Suma'],
+        ['MAS', 'Suma']
     ],
 
     'Mult':[
         ['Unario'],
-        ['"/"', 'Mult'],
-        ['"*"', 'Mult']
+        ['SLASH', 'Mult'],
+        ['ASTERISCO', 'Mult']
     ],
 
     'Unario':[
-        ['"!"', 'Unario'],
-        ['"-"', 'Unario'],
+        ['EXCLAMACION', 'Unario'],
+        ['GUION_MEDIO', 'Unario'],
         ['Primitivo']
     ],
 
     'Primitvo':[
-        ['"true"'],
-        ['"false"'],
+        ['TRUE'],
+        ['FALSE'],
         ['Numero'],
         ['String'],
-        ['Identificador'],
-        ['"("', 'Expresion', '")"']
+        ['ID'],
+        ['PAREN_OPEN', 'Expresion', 'PAREN_CLOSE']
     ]
 
 }
@@ -195,7 +195,7 @@ def parser(tokens):
     def parse():
         error = False
         index = 0
-        pni('S')
+        pni('Programa')
         
         if not error == True and tokens(index) == "#":
             return True
@@ -230,5 +230,11 @@ def parser(tokens):
             else:
                 index = index_aux
 
+    parse()
+
 
 def esTerminal(simbolo):
+    return True
+
+def esNoTerminal(simbolo):
+    return True
